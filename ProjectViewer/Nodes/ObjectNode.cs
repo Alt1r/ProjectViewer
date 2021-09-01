@@ -9,7 +9,7 @@ namespace ProjectViewer.Nodes
     {
         public IObjectModel Item { get; set; }
 
-        public ObjectNode(INode parent, IObjectModel item, IEnumerable<INode> children = null) 
+        public ObjectNode(INode parent, IObjectModel item, HashSet<INode> children = null) 
             : base (parent, children)
         {
             Item = item;

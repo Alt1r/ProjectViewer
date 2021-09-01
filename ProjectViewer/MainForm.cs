@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using ProjectViewer.Models;
 
 namespace ProjectViewer
 {
@@ -15,6 +17,8 @@ namespace ProjectViewer
         public MainForm()
         {
             InitializeComponent();
+            _propertyGridControl.SetData(new ProjectModel("proj1", "ASU"));
+            _nodeTreeControl.CreateTestData();
         }
     }
 }

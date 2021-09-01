@@ -7,12 +7,13 @@ namespace ProjectViewer.Nodes
     public class BaseNode: INode
     {
         public INode Parent { get; set; }
-        public IEnumerable<INode> Children { get; set; }
+        public HashSet<INode> Children { get; set; }
+        public int Id { get; set; } = 0;
 
-        protected BaseNode(INode parent, IEnumerable<INode> children = null)
+        protected BaseNode(INode parent = null, HashSet<INode> children = null)
         {
             Parent = parent;
-            Children = children ?? new List<INode>();
+            Children = children ?? new HashSet<INode>();
         }
 
         public virtual string GetName()
@@ -22,7 +23,7 @@ namespace ProjectViewer.Nodes
 
         public bool IsRoot()
         {
-            return false;
+            return Parent is null;
         }
     }
 }

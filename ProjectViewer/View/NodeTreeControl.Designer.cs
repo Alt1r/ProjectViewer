@@ -2,7 +2,7 @@
 
 namespace ProjectViewer.View
 {
-    partial class TreeListControl
+    partial class NodeTreeControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -66,9 +66,6 @@ namespace ProjectViewer.View
 
         private System.Windows.Forms.TreeView _tvData;
         private System.Windows.Forms.Label _lbName;
-
-        private System.Windows.Forms.TreeView treeView1;
-
         #endregion
     }
 }

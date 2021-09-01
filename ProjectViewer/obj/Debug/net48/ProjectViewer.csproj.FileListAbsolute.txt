@@ -1,5 +1,4 @@
 C:\KSE\proj\ProjectViewer\ProjectViewer\bin\Debug\net48\ProjectViewer.exe.config
-C:\KSE\proj\ProjectViewer\ProjectViewer\bin\Debug\net48\ProjectViewer.exe
 C:\KSE\proj\ProjectViewer\ProjectViewer\bin\Debug\net48\ProjectViewer.pdb
 C:\KSE\proj\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.csproj.AssemblyReference.cache
 C:\KSE\proj\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.AssemblyInfoInputs.cache
@@ -7,3 +6,8 @@ C:\KSE\proj\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.AssemblyIn
 C:\KSE\proj\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.csproj.CoreCompileInputs.cache
 C:\KSE\proj\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.exe
 C:\KSE\proj\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.pdb
+C:\KSE\proj\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.View.NodeTreeControl.resources
+C:\KSE\proj\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.csproj.GenerateResource.cache
+C:\KSE\proj\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.View.PropertyGridControl.resources
+C:\KSE\proj\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.MainForm.resources
+C:\KSE\proj\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.csproj.CopyComplete

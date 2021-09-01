@@ -5,7 +5,8 @@ namespace ProjectViewer.Nodes.Interfaces
     public interface INode
     {
         INode Parent { get; set; }
-        IEnumerable<INode> Children { get; set; }
+        HashSet<INode> Children { get; set; }
+        int Id { get; set; }
         
         string GetName();
         bool IsRoot();

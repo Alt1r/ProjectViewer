@@ -7,9 +7,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Update="View\TreeListControl.cs">
+      <Compile Update="View\NodeTreeControl.cs">
         <SubType>UserControl</SubType>
       </Compile>
+      <Compile Update="View\PropertyGridControl.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="ProjectViewer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>bin\Debug\net48\ProjectViewer.exe</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>
