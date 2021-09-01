@@ -1,0 +1,14 @@
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\bin\Debug\net48\ProjectViewer.exe.config
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\bin\Debug\net48\ProjectViewer.exe
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\bin\Debug\net48\ProjectViewer.pdb
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.csprojAssemblyReference.cache
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.MainForm.resources
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.View.PropertyGridControl.resources
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.csproj.GenerateResource.cache
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.AssemblyInfoInputs.cache
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.AssemblyInfo.cs
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.csproj.CoreCompileInputs.cache
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.pdb
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.View.ModelTreeControl.resources
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.View.ModelViewControl.resources
+H:\Projects\CSharp\ProjectViewer\ProjectViewer\obj\Debug\net48\ProjectViewer.exe

@@ -29,41 +29,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._nodeTreeControl = new ProjectViewer.View.NodeTreeControl();
-            this._propertyGridControl = new ProjectViewer.View.PropertyGridControl();
+            this._projectViewControl = new ProjectViewer.View.ModelViewControl();
             this.SuspendLayout();
             // 
-            // _nodeTreeControl
+            // _projectViewControl
             // 
-            this._nodeTreeControl.BackColor = System.Drawing.SystemColors.Desktop;
-            this._nodeTreeControl.Location = new System.Drawing.Point(1, -4);
-            this._nodeTreeControl.Name = "_nodeTreeControl";
-            this._nodeTreeControl.Size = new System.Drawing.Size(223, 454);
-            this._nodeTreeControl.TabIndex = 0;
-            // 
-            // _propertyGridControl
-            // 
-            this._propertyGridControl.BackColor = System.Drawing.SystemColors.Desktop;
-            this._propertyGridControl.Location = new System.Drawing.Point(230, 12);
-            this._propertyGridControl.Name = "_propertyGridControl";
-            this._propertyGridControl.Size = new System.Drawing.Size(309, 334);
-            this._propertyGridControl.TabIndex = 1;
+            this._projectViewControl.Location = new System.Drawing.Point(2, -1);
+            this._projectViewControl.Name = "_projectViewControl";
+            this._projectViewControl.Size = new System.Drawing.Size(600, 400);
+            this._projectViewControl.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this._propertyGridControl);
-            this.Controls.Add(this._nodeTreeControl);
+            this.ClientSize = new System.Drawing.Size(603, 404);
+            this.Controls.Add(this._projectViewControl);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
         }
 
-        private ProjectViewer.View.PropertyGridControl _propertyGridControl;
-
-        private ProjectViewer.View.NodeTreeControl _nodeTreeControl;
+        private ProjectViewer.View.ModelViewControl _projectViewControl;
 
         #endregion
     }
