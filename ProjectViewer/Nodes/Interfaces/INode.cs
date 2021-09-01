@@ -6,9 +6,11 @@ namespace ProjectViewer.Nodes.Interfaces
     {
         INode Parent { get; set; }
         HashSet<INode> Children { get; set; }
-        int Id { get; set; }
-        
-        string GetName();
-        bool IsRoot();
+        bool HasParent { get; set; }
+        bool HasChildren { get; set; }
+        void AddChildren(INode node);
+        void Remove();
+        void RemoveChild(INode node);
+        void RemoveAllChild();
     }
 }

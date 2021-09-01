@@ -24,6 +24,9 @@
       <Reference Include="ProjectViewer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
         <HintPath>bin\Debug\net48\ProjectViewer.exe</HintPath>
       </Reference>
+      <Reference Include="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <HintPath>C:\Users\Altir\.nuget\packages\microsoft.netframework.referenceassemblies.net48\1.0.0\build\.NETFramework\v4.8\System.Windows.Forms.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
     <ItemGroup>
