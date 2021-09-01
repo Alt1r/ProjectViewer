@@ -13,12 +13,56 @@
       <Compile Update="View\PropertyGridControl.cs">
         <SubType>UserControl</SubType>
       </Compile>
+      <Compile Include="obj\Debug\net48\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+      <Compile Include="obj\Debug\net48\ProjectViewer.AssemblyInfo.cs" />
+      <Compile Include="obj\Debug\net5.0-windows\.NETCoreApp,Version=v5.0.AssemblyAttributes.cs" />
+      <Compile Include="obj\Debug\net5.0-windows\ProjectViewer.AssemblyInfo.cs" />
+      <Compile Remove="obj\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Reference Include="ProjectViewer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
         <HintPath>bin\Debug\net48\ProjectViewer.exe</HintPath>
       </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="obj\Debug\net48\ProjectViewer.AssemblyInfoInputs.cache" />
+      <Content Include="obj\Debug\net48\ProjectViewer.assets.cache" />
+      <Content Include="obj\Debug\net48\ProjectViewer.csproj.AssemblyReference.cache" />
+      <Content Include="obj\Debug\net48\ProjectViewer.csproj.CopyComplete" />
+      <Content Include="obj\Debug\net48\ProjectViewer.csproj.CoreCompileInputs.cache" />
+      <Content Include="obj\Debug\net48\ProjectViewer.csproj.FileListAbsolute.txt" />
+      <Content Include="obj\Debug\net48\ProjectViewer.csproj.GenerateResource.cache" />
+      <Content Include="obj\Debug\net48\ProjectViewer.exe" />
+      <Content Include="obj\Debug\net48\ProjectViewer.MainForm.resources" />
+      <Content Include="obj\Debug\net48\ProjectViewer.pdb" />
+      <Content Include="obj\Debug\net48\ProjectViewer.View.NodeTreeControl.resources" />
+      <Content Include="obj\Debug\net48\ProjectViewer.View.PropertyGridControl.resources" />
+      <Content Include="obj\Debug\net5.0-windows\ProjectViewer.AssemblyInfoInputs.cache" />
+      <Content Include="obj\Debug\net5.0-windows\ProjectViewer.assets.cache" />
+      <Content Include="obj\Debug\net5.0-windows\ProjectViewer.csproj.AssemblyReference.cache" />
+      <Content Include="obj\Debug\net5.0-windows\ProjectViewer.GeneratedMSBuildEditorConfig.editorconfig" />
+      <Content Include="obj\project.assets.json" />
+      <Content Include="obj\project.nuget.cache" />
+      <Content Include="obj\project.packagespec.json" />
+      <Content Include="obj\ProjectViewer.csproj.nuget.dgspec.json" />
+      <Content Include="obj\ProjectViewer.csproj.nuget.g.props" />
+      <Content Include="obj\ProjectViewer.csproj.nuget.g.targets" />
+      <Content Include="obj\rider.project.restore.info" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="obj\Debug\net48\ProjectViewer.exe.withSupportedRuntime.config" />
+      <None Remove="obj\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="obj\Debug\net5.0-windows\ref" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="obj\**" />
     </ItemGroup>
 
 </Project>
