@@ -37,7 +37,7 @@ namespace ProjectViewer.Models
             }
         }
 
-        public ObjectModel(IHasChildren<IHasChildren> parent, bool childless, string id, string name)
+        public ObjectModel(INode parent, bool childless, string id, string name)
             : base(parent, childless)
         {
             ObjectId = id ?? throw new Exception("ObjectModel.ObjectId can't be null");

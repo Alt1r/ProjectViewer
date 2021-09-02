@@ -4,9 +4,9 @@ namespace ProjectViewer.View.EventArgs
 {
     public class CurrentSelectedChangedArgs : System.EventArgs
     {
-        public IHasChildren<IHasChildren> Node;
+        public INode Node;
 
-        public CurrentSelectedChangedArgs(IHasChildren<IHasChildren> node)
+        public CurrentSelectedChangedArgs(INode node)
         {
             Node = node;
         }

@@ -6,15 +6,15 @@ using ProjectViewer.Models.HierarchyStructure.Interfaces;
 
 namespace ProjectViewer.Models.HierarchyStructure
 {
-    public class BaseHasChildren<T> : IHasChildren<T> where T : IHasChildren
+    public class BaseHasChildren<T> : INode where T : INode
     {
-        private readonly HashSet<IHasChildren<T>> _children;
+        private readonly HashSet<INode> _children;
         [Browsable(false)]
-        public IReadOnlyCollection<IHasChildren<T>> Children => _children;
+        public IReadOnlyCollection<INode> Children => _children;
 
-        private IHasChildren<T> _parent;
+        private INode _parent;
         [Browsable(false)]
-        public IHasChildren<T> Parent
+        public INode Parent
         {
             get => _parent;
             set
@@ -43,14 +43,14 @@ namespace ProjectViewer.Models.HierarchyStructure
         [Browsable(false)] 
         public bool HasChilds => Children.Any();
 
-        protected BaseHasChildren(IHasChildren<T> parent = null, bool childless = false)
+        protected BaseHasChildren(INode parent = null, bool childless = false)
         { 
             Parent = parent;
-            _children = new HashSet<IHasChildren<T>>();
+            _children = new HashSet<INode>();
             Childless = childless;
         }
         
-        public void AddChildren(IHasChildren<T> child)
+        public void AddChildren(INode child)
         {
             if (Childless) throw new Exception($"Error on AddChildren: This node should be Childless");
             if (Children.Contains(child)) return;
@@ -64,7 +64,7 @@ namespace ProjectViewer.Models.HierarchyStructure
             _children.Clear();
         }
 
-        public void RemoveChild(IHasChildren<T> child)
+        public void RemoveChild(INode child)
         {
             _children.Remove(child);
         }
