@@ -1,13 +1,12 @@
 ﻿using ProjectViewer.Models.HierarchyStructure.Interfaces;
-using ProjectViewer.Models.Interfaces;
 
 namespace ProjectViewer.View.EventArgs
 {
     public class CurrentSelectedChangedArgs : System.EventArgs
     {
-        public IHasChildren<IObjectModel> Node;
+        public IHasChildren<IHasChildren> Node;
 
-        public CurrentSelectedChangedArgs(IHasChildren<IObjectModel> node)
+        public CurrentSelectedChangedArgs(IHasChildren<IHasChildren> node)
         {
             Node = node;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using ProjectViewer.Models.Factory;
 using ProjectViewer.Models.Factory.Interfaces;
@@ -11,15 +12,15 @@ namespace ProjectViewer.View
 {
     public partial class ModelTreeControl : UserControl
     {
-        private IBaseModel<IObjectModel> _currentSelected;
-        private readonly Dictionary<TreeNode, IBaseModel<IObjectModel>> _treeModelDictionary;
-        private readonly Dictionary<IBaseModel<IObjectModel>, TreeNode> _modelTreeDictionary;
+        private IBaseModel _currentSelected;
+        private readonly Dictionary<TreeNode, IBaseModel> _treeModelDictionary;
+        private readonly Dictionary<IBaseModel, TreeNode> _modelTreeDictionary;
         public event EventHandler<CurrentSelectedChangedArgs> CurrentSelectedChanged;
         private IModelFactory _modelFactory;
 
         public IModelFactory ModelFactory
         {
-            private get => _modelFactory;
+            get => _modelFactory;
             set
             {
                 _modelFactory = value;
@@ -28,7 +29,7 @@ namespace ProjectViewer.View
             }
         }
 
-        private IBaseModel<IObjectModel> CurrentSelected
+        private IBaseModel CurrentSelected
         {
             get => _currentSelected;
             set
@@ -44,8 +45,8 @@ namespace ProjectViewer.View
         {
             InitializeComponent();
             
-            _treeModelDictionary = new Dictionary<TreeNode, IBaseModel<IObjectModel>>();
-            _modelTreeDictionary = new Dictionary<IBaseModel<IObjectModel>, TreeNode>();
+            _treeModelDictionary = new Dictionary<TreeNode, IBaseModel>();
+            _modelTreeDictionary = new Dictionary<IBaseModel, TreeNode>();
             
             Subscribe();
             _btnRemove.Enabled = _btnAddObject.Enabled = _btnAddProject.Enabled = false;
@@ -53,12 +54,7 @@ namespace ProjectViewer.View
             ModelFactory = new DefaultModelFactory();
         }
 
-        public void UpdateSelectedNodeText(string text)
-        {
-            _tvData.SelectedNode.Text = text;
-        }
-
-        public void ReloadData(HashSet<IBaseModel<IObjectModel>> nodes)
+        public void ReloadData(HashSet<IBaseModel> nodes)
         {
             ClearTree();
             foreach (var node in nodes)
@@ -67,7 +63,7 @@ namespace ProjectViewer.View
             }
         }
 
-        public void ReloadData(IBaseModel<IObjectModel> node)
+        public void ReloadData(IBaseModel node)
         {
             ClearTree();
             CreateTreeNode(node);
@@ -86,7 +82,7 @@ namespace ProjectViewer.View
             CurrentSelected = null;
         }
 
-        private TreeNode CreateTreeNode(IBaseModel<IObjectModel> model, TreeNode parentTreeNode = null)
+        private TreeNode CreateTreeNode(IBaseModel model, TreeNode parentTreeNode = null)
         {
             var treeNode = new TreeNode(model.ToString());
             if (parentTreeNode is null) _tvData.Nodes.Add(treeNode);
@@ -94,12 +90,12 @@ namespace ProjectViewer.View
             _treeModelDictionary.Add(treeNode, model);
             _modelTreeDictionary.Add(model, treeNode);
             model.PropertyChanged += ModelOnPropertyChanged;
-            foreach (var children in model.Children)
+            
+            foreach (var children in model.Children.OfType<IBaseModel>())
             {
-                var childModel = children as IBaseModel<IObjectModel>;
-                CreateTreeNode(childModel, treeNode);
+                CreateTreeNode(children, treeNode);
             }
-
+            
             CurrentSelected = model;
             return treeNode;
         }
@@ -110,13 +106,13 @@ namespace ProjectViewer.View
             DeleteModelFromControl(model, treeNode);
         }
 
-        private void DeleteModel(IBaseModel<IObjectModel> model)
+        private void DeleteModel(IBaseModel model)
         {
             var treeNode = _modelTreeDictionary[model];
             DeleteModelFromControl(model, treeNode);
         }
 
-        private void DeleteModelFromControl(IBaseModel<IObjectModel> model, TreeNode treeNode)
+        private void DeleteModelFromControl(IBaseModel model, TreeNode treeNode)
         {
             model.PropertyChanged -= ModelOnPropertyChanged;
             _modelTreeDictionary.Remove(model);
@@ -129,7 +125,13 @@ namespace ProjectViewer.View
         {
             _tvData.Select();
             _tvData.SelectedNode = node;
-            CurrentSelected = CurrentSelected = _tvData.SelectedNode is null ? null : _treeModelDictionary[_tvData.SelectedNode];
+            CurrentSelected =  GetSelectedModelFromDictionary();
+        }
+
+        private IBaseModel GetSelectedModelFromDictionary()
+        {
+            if (_tvData.SelectedNode is null) return null;
+            return _treeModelDictionary[_tvData.SelectedNode];
         }
 
 #region EventHandlers
@@ -152,7 +154,7 @@ namespace ProjectViewer.View
         private void ModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName != "Name") return;
-            var model = sender as IBaseModel<IObjectModel>;
+            var model = sender as IBaseModel;
             if (model is null) return;
             _modelTreeDictionary[model].Text = model.ToString();
         }

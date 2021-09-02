@@ -6,7 +6,7 @@ using ProjectViewer.Models.Interfaces;
 
 namespace ProjectViewer.Models
 {
-    public class ObjectModel : BaseModel<IObjectModel>, IObjectModel
+    public class ObjectModel : BaseModel, IObjectModel
     {
         private string _objectId;
         [DisplayName("Код")]
@@ -37,10 +37,10 @@ namespace ProjectViewer.Models
             }
         }
 
-        public ObjectModel(IHasChildren<IObjectModel> parent, bool childless, string id, string name)
+        public ObjectModel(IHasChildren<IHasChildren> parent, bool childless, string id, string name)
             : base(parent, childless)
         {
-            ObjectId = id;
+            ObjectId = id ?? throw new Exception("ObjectModel.ObjectId can't be null");
             Name = name;
         }
 

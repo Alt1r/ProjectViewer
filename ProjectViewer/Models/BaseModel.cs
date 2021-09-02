@@ -7,19 +7,20 @@ using ProjectViewer.Models.Interfaces;
 
 namespace ProjectViewer.Models
 {
-    public class BaseModel<T> : BaseHasChildren<T>, IBaseModel<T> where T : IHasChildren
+    public class BaseModel : BaseHasChildren<IHasChildren>, IBaseModel
     {
         [DisplayName("Дата создания")]
         [Category("Временные метки")]
         [Description("Дата создания UTC")]
         public DateTime CreationTimestamp { get; private set; }
+        
         [DisplayName("Дата изменения")]
         [Category("Временные метки")]
         [Description("Дата последнего изменения UTC")]
         public DateTime LastModifyTimestamp { get; private set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected BaseModel(IHasChildren<T> parent = null, bool childless = false) : base(parent, childless)
+        protected BaseModel(IHasChildren<IHasChildren> parent = null, bool childless = false) : base(parent, childless)
         {
             LastModifyTimestamp = CreationTimestamp = DateTime.UtcNow;
         }

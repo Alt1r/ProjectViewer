@@ -13,12 +13,12 @@ namespace ProjectViewer.View
             Subscribe();
         }
 
-        public void ReloadData(IBaseModel<IObjectModel> data)
+        public void ReloadData(IBaseModel data)
         {
             _nodeTreeControl.ReloadData(data);
         }
         
-        public void ReloadData(HashSet<IBaseModel<IObjectModel>> data)
+        public void ReloadData(HashSet<IBaseModel> data)
         {
             _nodeTreeControl.ReloadData(data);
         }
@@ -38,7 +38,7 @@ namespace ProjectViewer.View
 
         private void NodeTreeControlOnCurrentSelectedChanged(object sender, CurrentSelectedChangedArgs e)
         {
-            var model = e.Node as IBaseModel<IObjectModel>;
+            var model = e.Node as IBaseModel;
             _propertyGridControl.SetData(model);
         }
 

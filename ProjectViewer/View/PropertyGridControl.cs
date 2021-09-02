@@ -16,12 +16,13 @@ namespace ProjectViewer.View
             _propertyGrid.SelectedObject = dataSource;
         }
 
-        public void SetData<T>(IBaseModel<T> dataSource) where T : IBaseModel<T>
+        public void SetData(IBaseModel dataSource)
         {
-            var oldModel = _propertyGrid.SelectedObject as IBaseModel<T>;
-            if (!(oldModel is null)) 
-                oldModel.PropertyChanged -= ModelOnPropertyChanged;
             
+            if (_propertyGrid.SelectedObject is IBaseModel oldModel)
+            {
+                oldModel.PropertyChanged -= ModelOnPropertyChanged;
+            }
             
             if (!(dataSource is null)) 
                 dataSource.PropertyChanged += ModelOnPropertyChanged;

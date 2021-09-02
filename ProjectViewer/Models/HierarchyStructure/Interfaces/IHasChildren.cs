@@ -4,8 +4,8 @@ namespace ProjectViewer.Models.HierarchyStructure.Interfaces
 {
     public interface IHasChildren<T> : IHasChildren
     {
-        //IHasChildren<T> Parent { get; set; }
-        HashSet<IHasChildren<T>> Children { get; set; }
+        IHasChildren<T> Parent { get; set; }
+        IReadOnlyCollection<IHasChildren<T>> Children { get; }
         
         void AddChildren(IHasChildren<T> child);
         void RemoveChild(IHasChildren<T> child);
@@ -18,6 +18,5 @@ namespace ProjectViewer.Models.HierarchyStructure.Interfaces
         bool IsRoot { get; }
         bool HasChilds { get; }
         void Remove();
-        void RemoveAllChild();
     }
 }

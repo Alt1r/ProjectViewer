@@ -1,13 +1,9 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Xml;
-using ProjectViewer.Models.HierarchyStructure;
+﻿using System.ComponentModel;
 using ProjectViewer.Models.HierarchyStructure.Interfaces;
 
 namespace ProjectViewer.Models.Interfaces
 {
-    public interface IBaseModel<T> : IHasChildren<T>, INotifyPropertyChanged, ITimestampModel where T : IHasChildren
+    public interface IBaseModel : IHasChildren<IHasChildren>, INotifyPropertyChanged, ITimestampModel
     {
         
     }

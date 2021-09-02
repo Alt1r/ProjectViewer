@@ -8,10 +8,11 @@ namespace ProjectViewer.Models.HierarchyStructure
 {
     public class BaseHasChildren<T> : IHasChildren<T> where T : IHasChildren
     {
-        private IHasChildren<T> _parent;
+        private readonly HashSet<IHasChildren<T>> _children;
         [Browsable(false)]
-        public HashSet<IHasChildren<T>> Children { get; set; }
+        public IReadOnlyCollection<IHasChildren<T>> Children => _children;
 
+        private IHasChildren<T> _parent;
         [Browsable(false)]
         public IHasChildren<T> Parent
         {
@@ -38,13 +39,14 @@ namespace ProjectViewer.Models.HierarchyStructure
         public int Depth { get; private set; }
         [Browsable(false)]
         public bool IsRoot { get; private set; }
-        [Browsable(false)]
-        public bool HasChilds { get; private set; }
+
+        [Browsable(false)] 
+        public bool HasChilds => Children.Any();
 
         protected BaseHasChildren(IHasChildren<T> parent = null, bool childless = false)
         { 
             Parent = parent;
-            Children = new HashSet<IHasChildren<T>>();
+            _children = new HashSet<IHasChildren<T>>();
             Childless = childless;
         }
         
@@ -52,30 +54,19 @@ namespace ProjectViewer.Models.HierarchyStructure
         {
             if (Childless) throw new Exception($"Error on AddChildren: This node should be Childless");
             if (Children.Contains(child)) return;
-            Children.Add(child);
+            
+            _children.Add(child);
         }
         
         public void Remove()
         {
             Parent?.RemoveChild(this);
-            RemoveAllChild();
+            _children.Clear();
         }
 
         public void RemoveChild(IHasChildren<T> child)
         {
-            child.RemoveAllChild();
-            Children.Remove(child);
-            HasChilds = Children.Any();
-        }
-
-        public void RemoveAllChild()
-        {
-            foreach(var child in Children)
-            {
-                child.RemoveAllChild();
-            }
-            Children.Clear();
-            HasChilds = false;
+            _children.Remove(child);
         }
     }
 }

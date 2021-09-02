@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Xml;
 using ProjectViewer.Models;
-using ProjectViewer.Models.HierarchyStructure.Interfaces;
 using ProjectViewer.Models.Interfaces;
 
 namespace ProjectViewer
@@ -25,14 +16,11 @@ namespace ProjectViewer
             var secondLvlObject = new ObjectModel(firstLvlObject, true,"2lvlObject", "Труба" );
             var secondLvlObject2 = new ObjectModel(firstLvlObject, true,"2lvlObject2", "Труба2" );
             
-            var modelHashSet = new HashSet<IBaseModel<IObjectModel>>(){
+            var modelHashSet = new HashSet<IBaseModel>(){
                 projModel
             };
             
             _projectViewControl.ReloadData(modelHashSet);
-            //_projectViewControl.ReloadData(projModel);
-            //_propertyGridControl.SetData(new ProjectModel("proj1", "ASU"));
-            //_nodeTreeControl.CreateTestData();
         }
     }
 }

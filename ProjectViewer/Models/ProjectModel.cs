@@ -4,7 +4,7 @@ using ProjectViewer.Models.Interfaces;
 
 namespace ProjectViewer.Models
 {
-    public class ProjectModel : BaseModel<IObjectModel>, IProjectModel
+    public class ProjectModel : BaseModel, IProjectModel
     {
         private string _porjectId;
         [DisplayName("Шифр")]
@@ -37,7 +37,7 @@ namespace ProjectViewer.Models
         public ProjectModel(string id, string name) 
             : base()
         {
-            ProjectId = id;
+            ProjectId = id ?? throw new Exception("ProjectModel.ProjectId can't be null");
             Name = name;
         }
         
