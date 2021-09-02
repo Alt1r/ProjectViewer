@@ -61,6 +61,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Nodes" />
       <Folder Include="obj\Debug\net5.0-windows\ref" />
     </ItemGroup>
 

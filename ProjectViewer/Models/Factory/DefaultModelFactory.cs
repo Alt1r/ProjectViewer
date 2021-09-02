@@ -1,6 +1,6 @@
 ﻿using ProjectViewer.Models.Factory.Interfaces;
+using ProjectViewer.Models.HierarchyStructure.Interfaces;
 using ProjectViewer.Models.Interfaces;
-using ProjectViewer.Nodes.Interfaces;
 
 namespace ProjectViewer.Models.Factory
 {

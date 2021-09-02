@@ -1,5 +1,5 @@
-﻿using ProjectViewer.Models.Interfaces;
-using ProjectViewer.Nodes.Interfaces;
+﻿using ProjectViewer.Models.HierarchyStructure.Interfaces;
+using ProjectViewer.Models.Interfaces;
 
 namespace ProjectViewer.Models.Factory.Interfaces
 {

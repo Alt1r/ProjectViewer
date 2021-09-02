@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using ProjectViewer.Models.EventArgs;
+﻿using System.Collections.Generic;
 
-namespace ProjectViewer.Nodes.Interfaces
+namespace ProjectViewer.Models.HierarchyStructure.Interfaces
 {
     public interface IHasChildren<T> : IHasChildren
     {
-        IHasChildren<T> Parent { get; set; }
+        //IHasChildren<T> Parent { get; set; }
         HashSet<IHasChildren<T>> Children { get; set; }
         
         void AddChildren(IHasChildren<T> child);
@@ -21,6 +19,5 @@ namespace ProjectViewer.Nodes.Interfaces
         bool HasChilds { get; }
         void Remove();
         void RemoveAllChild();
-        event EventHandler<NameChangedEventArgs> NameChanged;
     }
 }

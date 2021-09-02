@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using ProjectViewer.Models.Interfaces;
-using ProjectViewer.Nodes;
-using ProjectViewer.Nodes.Interfaces;
 using ProjectViewer.View.EventArgs;
 
 namespace ProjectViewer.View
@@ -15,12 +13,12 @@ namespace ProjectViewer.View
             Subscribe();
         }
 
-        public void ReloadData(IHasChildren<IObjectModel> data)
+        public void ReloadData(IBaseModel<IObjectModel> data)
         {
             _nodeTreeControl.ReloadData(data);
         }
         
-        public void ReloadData(HashSet<IHasChildren<IObjectModel>> data)
+        public void ReloadData(HashSet<IBaseModel<IObjectModel>> data)
         {
             _nodeTreeControl.ReloadData(data);
         }
@@ -40,7 +38,8 @@ namespace ProjectViewer.View
 
         private void NodeTreeControlOnCurrentSelectedChanged(object sender, CurrentSelectedChangedArgs e)
         {
-            _propertyGridControl.SetData(e.Node);
+            var model = e.Node as IBaseModel<IObjectModel>;
+            _propertyGridControl.SetData(model);
         }
 
         private void OnDisposed(object sender, System.EventArgs e)

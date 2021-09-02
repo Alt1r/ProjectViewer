@@ -32,7 +32,7 @@ namespace ProjectViewer.View
         private void InitializeComponent()
         {
             this._nodeTreeControl = new ProjectViewer.View.ModelTreeControl();
-            this._propertyGridControl = new ProjectViewer.View.PropertyGridControl();
+            this._propertyGridControl = new ProjectViewer.View.ModelPropertyGridControl();
             this.SuspendLayout();
             // 
             // _nodeTreeControl
@@ -67,7 +67,7 @@ namespace ProjectViewer.View
         }
 
         private ProjectViewer.View.ModelTreeControl _nodeTreeControl;
-        private ProjectViewer.View.PropertyGridControl _propertyGridControl;
+        private ProjectViewer.View.ModelPropertyGridControl _propertyGridControl;
 
         #endregion
     }

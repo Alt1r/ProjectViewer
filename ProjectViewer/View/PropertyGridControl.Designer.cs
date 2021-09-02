@@ -2,7 +2,7 @@
 
 namespace ProjectViewer.View
 {
-    partial class PropertyGridControl
+    partial class ModelPropertyGridControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -61,7 +61,7 @@ namespace ProjectViewer.View
             this.Controls.Add(this._propertyGrid);
             this.MaximumSize = new System.Drawing.Size(350, 400);
             this.MinimumSize = new System.Drawing.Size(350, 400);
-            this.Name = "PropertyGridControl";
+            this.Name = "ModelPropertyGridControl";
             this.Size = new System.Drawing.Size(350, 400);
             this.ResumeLayout(false);
         }

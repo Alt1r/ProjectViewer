@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using ProjectViewer.Models.EventArgs;
-using ProjectViewer.Models.Interfaces;
-using ProjectViewer.Nodes.Interfaces;
+using ProjectViewer.Models.HierarchyStructure.Interfaces;
 
-namespace ProjectViewer.Nodes
+namespace ProjectViewer.Models.HierarchyStructure
 {
-    public class HasChildrenBase<T> : IHasChildren<T>, INameChangedNotificator where T : IHasChildren
+    public class BaseHasChildren<T> : IHasChildren<T> where T : IHasChildren
     {
         private IHasChildren<T> _parent;
         [Browsable(false)]
@@ -42,14 +40,8 @@ namespace ProjectViewer.Nodes
         public bool IsRoot { get; private set; }
         [Browsable(false)]
         public bool HasChilds { get; private set; }
-        public event EventHandler<NameChangedEventArgs> NameChanged;
 
-        protected void InvokeNameChanged(string name)
-        {
-            NameChanged?.Invoke(this, new NameChangedEventArgs(name));
-        }
-
-        protected HasChildrenBase(IHasChildren<T> parent = null, bool childless = false)
+        protected BaseHasChildren(IHasChildren<T> parent = null, bool childless = false)
         { 
             Parent = parent;
             Children = new HashSet<IHasChildren<T>>();

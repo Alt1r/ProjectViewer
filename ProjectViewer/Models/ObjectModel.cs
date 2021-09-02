@@ -1,19 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using ProjectViewer.Models.EventArgs;
+using ProjectViewer.Models.HierarchyStructure.Interfaces;
 using ProjectViewer.Models.Interfaces;
-using ProjectViewer.Nodes;
-using ProjectViewer.Nodes.Interfaces;
 
 namespace ProjectViewer.Models
 {
-    public class ObjectModel : HasChildrenBase<IObjectModel>, IObjectModel
+    public class ObjectModel : BaseModel<IObjectModel>, IObjectModel
     {
+        private string _objectId;
         [DisplayName("Код")]
         [Category("Основное")]
         [Description("Код объекта типа string")]
-        public string ObjectId { get; set; }
+        public string ObjectId 
+        { 
+            get => _objectId;
+            set
+            {
+                _objectId = value ?? throw new Exception("ObjectModel.ObjectId can't be null");
+                NotifyPropertyChanged();
+            } 
+        }
 
         private string _name;
 
@@ -25,8 +32,8 @@ namespace ProjectViewer.Models
             get => _name;
             set
             {
-                _name = value;
-                InvokeNameChanged(_name);
+                _name = value ?? throw new Exception("ObjectModel.Name can't be null");
+                NotifyPropertyChanged();
             }
         }
 
