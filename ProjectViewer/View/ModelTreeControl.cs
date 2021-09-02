@@ -146,7 +146,11 @@ namespace ProjectViewer.View
         private void Unsubscribe()
         {
             this.Disposed -= OnDisposed;
-            _tvData.AfterSelect -= TvDataOnAfterSelect; 
+            _tvData.AfterSelect -= TvDataOnAfterSelect;
+            foreach (var model in _treeModelDictionary.Values)
+            {
+                model.NameChanged -= ModelOnNameChanged;
+            }
         }
         
         private void ModelOnNameChanged(object sender, NameChangedEventArgs e)
