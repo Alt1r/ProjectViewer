@@ -7,28 +7,33 @@ using ProjectViewer.Models.Interfaces;
 
 namespace ProjectViewer.Models
 {
-    public class BaseModel : BaseHasChildren<INode>, IBaseModel
+    public class BaseModel : BaseNode, IBaseModel
     {
         [DisplayName("Дата создания")]
         [Category("Временные метки")]
         [Description("Дата создания UTC")]
-        public DateTime CreationTimestamp { get; private set; }
+        public DateTime CreationTimestamp { get; }
         
         [DisplayName("Дата изменения")]
         [Category("Временные метки")]
         [Description("Дата последнего изменения UTC")]
         public DateTime LastModifyTimestamp { get; private set; }
-        public event PropertyChangedEventHandler PropertyChanged;
-
+        
         protected BaseModel(INode parent = null, bool childless = false) : base(parent, childless)
         {
             LastModifyTimestamp = CreationTimestamp = DateTime.UtcNow;
         }
 
-        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        protected override void ChildOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             LastModifyTimestamp = DateTime.UtcNow;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            base.NotifyPropertyChanged(nameof(LastModifyTimestamp));
+        }
+
+        protected override void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            LastModifyTimestamp = DateTime.UtcNow;
+            base.NotifyPropertyChanged(propertyName);
         }
     }
 }

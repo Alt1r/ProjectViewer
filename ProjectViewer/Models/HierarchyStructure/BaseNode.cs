@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using ProjectViewer.Models.HierarchyStructure.Interfaces;
 
 namespace ProjectViewer.Models.HierarchyStructure
 {
-    public class BaseHasChildren<T> : INode where T : INode
+    public abstract class BaseNode : INode 
     {
-        private readonly HashSet<INode> _children;
+        private readonly HashSet<INode> _children = new HashSet<INode>();
         [Browsable(false)]
         public IReadOnlyCollection<INode> Children => _children;
 
@@ -42,11 +43,11 @@ namespace ProjectViewer.Models.HierarchyStructure
 
         [Browsable(false)] 
         public bool HasChilds => Children.Any();
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        protected BaseHasChildren(INode parent = null, bool childless = false)
+        protected BaseNode(INode parent = null, bool childless = false)
         { 
             Parent = parent;
-            _children = new HashSet<INode>();
             Childless = childless;
         }
         
@@ -55,18 +56,31 @@ namespace ProjectViewer.Models.HierarchyStructure
             if (Childless) throw new Exception($"Error on AddChildren: This node should be Childless");
             if (Children.Contains(child)) return;
             
+            child.PropertyChanged += ChildOnPropertyChanged;
             _children.Add(child);
         }
-        
+
+        protected abstract void ChildOnPropertyChanged(object sender, PropertyChangedEventArgs e);
+
         public void Remove()
         {
             Parent?.RemoveChild(this);
+            foreach (var child in _children)
+            {
+                child.PropertyChanged -= ChildOnPropertyChanged;
+            }
             _children.Clear();
         }
 
         public void RemoveChild(INode child)
         {
+            child.PropertyChanged -= ChildOnPropertyChanged;
             _children.Remove(child);
+        }
+        
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
